@@ -1,14 +1,17 @@
-﻿using System;
+﻿// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Azure.Devices.Client;
 using System.Threading;
 
-namespace multiplexingDotNetCore
+namespace Microsoft.Azure.Devices.Client.Samples
 {
+
     class Program
     {
-        // String containing IotHub Hostname:
+         // String containing IotHub Hostname:
         //"hostname.azure-devices.net"
         private const string IoTHubHostName = "<iothubhostname>.azure-devices.net";
 
@@ -51,7 +54,7 @@ namespace multiplexingDotNetCore
 
         static async Task MultiplexConnection()
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < MUX_DEVICES; i++)
             {
                 var auth = new DeviceAuthenticationWithRegistrySymmetricKey(deviceIds[i], devicePrimaryKeys[i]);
                 deviceClients[i] = DeviceClient.Create(
